@@ -2,6 +2,8 @@ const express = require('express');
 const { getCollections, getCollectionBySymbol, addOrUpdateCollection, deleteCollection } = require('../dynamo/dynamoCollections');
 let router = express.Router();
 
+
+// Routes /collections
 router
     .route('/')
     .get((async (req, res) => {
@@ -26,6 +28,7 @@ router
 );
 
 
+// Routes /collections/:symbol
 router
     .route('/:symbol')
     .get((async (req, res) => {

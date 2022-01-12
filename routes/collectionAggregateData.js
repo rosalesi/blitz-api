@@ -2,6 +2,8 @@ const express = require('express');
 const { getCollectionAggregateData, getCollectionAggregateDataBySymbol } = require('../dynamo/dynamoCollectionAggregateData');
 let router = express.Router();
 
+
+// Routes /collectionAggregateData
 router
     .route('/')
     .get((async (req, res) => {
@@ -15,6 +17,8 @@ router
     })
 );
 
+
+// Roues /collectionAggregateData/:symbol
 router
     .route('/:symbol')
     .get((async (req, res) => {
