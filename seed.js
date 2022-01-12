@@ -1,6 +1,6 @@
 const axios = require('axios');
-const {addOrUpdateCollection} = require('./dynamoCollections');
-const {addOrUpdateCollectionAggregateData} = require('./dynamoCollectionAggregateData');
+const {addOrUpdateCollection} = require('./dynamo/dynamoCollections');
+const {addOrUpdateCollectionAggregateData} = require('./dynamo/dynamoCollectionAggregateData');
 
 const seedData = async () => {
     const url = 'https://api-mainnet.magiceden.io/all_collections';
