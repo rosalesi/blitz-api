@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-require('dotenv').config({path:'/Users/ivanrosales/Documents/grind/api/blitz-apiV2/blitz-tools-api/.env'});
+require('dotenv').config({path:__dirname+'/./../../.env'})
 
 AWS.config.update({
     region: process.env.AWS_DEFAULT_REGION,

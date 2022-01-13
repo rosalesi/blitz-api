@@ -12,7 +12,7 @@ router
             res.json(collections);
         } catch (error) {
             console.error(error);
-            res.status(500).json({err: "Something went wrong"});
+            res.status(500).json({error: "Something went wrong"});
         }
     }))
     .post((async (req, res) => {
@@ -22,7 +22,7 @@ router
             res.json(newCollection);
         } catch (error) {
             console.error(error);
-            res.status(500).json({err: "Something went wrong"});
+            res.status(500).json({error: "Something went wrong"});
         }
     })
 );
@@ -38,7 +38,7 @@ router
             res.json(collections);
         } catch (error) {
             console.error(error);
-            res.status(500).json({err: "Something went wrong"});
+            res.status(500).json({error: "Something went wrong"});
         }
     }))
     .put((async (req, res) => {

@@ -1,45 +1,31 @@
 service: blitz-tools-api
-frameworkVersion: '2 || 3'
-
-custom:
-  tableName: 'users-table-${sls:stage}'
 
 provider:
   name: aws
   runtime: nodejs12.x
-  lambdaHashingVersion: '20201221'
-  iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - dynamodb:Query
-            - dynamodb:Scan
-            - dynamodb:GetItem
-            - dynamodb:PutItem
-            - dynamodb:UpdateItem
-            - dynamodb:DeleteItem
-          Resource:
-            - Fn::GetAtt: [ UsersTable, Arn ]
-  environment:
-    USERS_TABLE: ${self:custom.tableName}
+  lambdaHashingVersion: "20201221"
+  region: us-east-2
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Scan
+        - dynamodb:Query
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:GetItem
+      Resource: 
+          - "arn:aws:dynamodb:us-east-2:668320536571:table/blitz-api"
+          - "arn:aws:dynamodb:us-east-2:668320536571:table/collectionAggregateData"
 
 functions:
   api:
     handler: handler.handler
     events:
-      - httpApi: '*'
-
-resources:
-  Resources:
-    UsersTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        AttributeDefinitions:
-          - AttributeName: userId
-            AttributeType: S
-        KeySchema:
-          - AttributeName: userId
-            KeyType: HASH
-        BillingMode: PAY_PER_REQUEST
-        TableName: ${self:custom.tableName}
+      - http:
+          path: /
+          method: GET
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
