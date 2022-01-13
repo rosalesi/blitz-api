@@ -27,6 +27,18 @@ functions:
           method: GET
           cors: true
       - http:
-          path: /{proxy+}
-          method: ANY
+          path: /collections
+          method: GET
+          cors: true
+      - http:
+          path: /collections/{symbol}
+          method: GET
+          cors: true
+      - http:
+          path: /collectionAggregateData
+          method: GET
+          cors: true
+      - http:
+          path: /collectionAggregateData/{symbol}
+          method: GET
           cors: true
