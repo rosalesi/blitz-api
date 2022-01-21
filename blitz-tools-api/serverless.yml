@@ -42,3 +42,9 @@ functions:
           path: /collectionAggregateData/{symbol}
           method: GET
           cors: true
+  #collectionsHandler:
+  #  handler: src/seed.handler
+  #  timeout: 45
+  #  events:
+      # Invoke Lambda function every 10 minutes
+      # - schedule: rate(10 minutes)
